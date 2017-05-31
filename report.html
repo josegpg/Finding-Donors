@@ -13950,7 +13950,17 @@ FhGSJEmSuvL/ARUQr8HpLLNAAAAAAElFTkSuQmCC
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
-<p><strong> Ada Boosting </strong> is more than a simple model. It's a group of simple models that learn simple rules to classify correctly the data. You may be worried about the efficacy of those simple rules while predicting complex data, and that's the beauty of AdaBoosting because it learns simple rules that can partially explain the behavior of portions of the data and finally combines them. Each of the simple models only have to worry to perform well on its own zone of the data and then AdaBoosting merges them achieving more complex rules capable of perform well generally.</p>
+<p><strong> Ada Boosting </strong> is more than a simple model. It's a group of simple models that learn simple rules to classify correctly the data and then by mixing those rules we can get good results. Here's how it works:</p>
+<ol>
+<li>The algorithm gives weights to each instance in the training set, starting all with equal weights</li>
+<li><p>A simple model, in this case a very simple Decision Tree, is fitted to the training data and then used to predict the data in order to do 2 things:</p>
+<p>2.1 Get a value called alpha, that is just a measure of how well the simple model has performed.</p>
+<p>2.2 Using the alpha value the algorithm is capable of scale the weights of the training data, increasing the weight of those instances wrongly classified and decresing the weight of those correctly classified.</p>
+</li>
+<li><p>The previous steps are repeated until all the training instances are correctly classified or any other stop criteria is met.</p>
+</li>
+<li>Finally to predict, the algorithm takes the classification given by each of the simple models trained and then sums them weighting by the alpha value mentioned before. After calculating the weighted sum, the sign of the vale is taken as the final classification label. For instance, if the sign is + then the output would be 1, 0 otherwise.</li>
+</ol>
 
 </div>
 </div>
